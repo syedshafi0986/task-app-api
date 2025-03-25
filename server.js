@@ -18,18 +18,21 @@ app.get("/" , (req, res) => {
 }
 );
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}
-).then(() => {
-    console.log("Database connected");
-}
-)
-.catch((err) => {
-    console.log(err);
-}
-);
+const connectDB = async () => {
+    if (isConnected) return; // If already connected, skip connection
+  
+    try {
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      });
+      isConnected = true;
+      console.log("✅ MongoDB Connected!");
+    } catch (err) {
+      console.error("❌ MongoDB Connection Error:", err);
+    }
+  };
+  connectDB();
 
 
 
