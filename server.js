@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use("/tasks", taskRoutes);
 app.get("/" , (req, res) => {   
-    res.send("Hello World");
+    res.send("Hello wolrds from server");
 }
 );
 
