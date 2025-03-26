@@ -32,5 +32,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use("/tasks", taskRoutes);
 
 
-
+app.listen(3000,()=>{
+    console.log("app is listening at port 3000")
+})
 export default app;
